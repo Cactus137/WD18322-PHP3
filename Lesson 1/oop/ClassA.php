@@ -21,4 +21,15 @@ class ClassA
         echo "Color: $this->color <br>";
         echo "Age: $this->age <br>";
     }
+
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }
