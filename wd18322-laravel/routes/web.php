@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,8 @@ Route::get('/about', function () {
 Route::get('/counter', function () {
     return view('livewire.counter');
 })->name('livewire.counter');
+
+Route::get('/posts', function() {
+    $posts = DB::table('posts')->get();
+    dd($posts);
+});
