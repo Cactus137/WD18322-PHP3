@@ -18,17 +18,15 @@
 <body>
 
     <div class="header">
-        <livewire:partials.header-admin />
+        @include('partials.header-admin')
     </div>
-
-    <livewire:counter />
 
     <div class="content h-screen">
         @yield('content')
     </div>
 
     <div class="footer">
-        <livewire:partials.footer-admin />
+        @include('partials.footer-admin')
     </div>
 
     @livewireScripts
