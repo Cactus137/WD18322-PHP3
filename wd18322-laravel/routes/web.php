@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -53,4 +54,14 @@ Route::get('/posts', function () {
         ->join('categories', 'categories.id', '=', 'posts.category_id')
         ->get();
     return ($posts);
+});
+
+Route::prefix('admin/categories')->group(function () {
+    Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
+    // Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+    // Route::post('/', [CategoryController::class, 'store'])->name('admin.categories.store');
+    // Route::get('/{id}', [CategoryController::class, 'show'])->name('admin.categories.show');
+    // Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+    // Route::put('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+    // Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 });

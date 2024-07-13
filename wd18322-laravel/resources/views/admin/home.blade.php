@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content-center mt-5">
-        <div class="flex flex-wrap">
+        {{-- <div class="flex flex-wrap">
             <div class="max-w-sm mx-5 rounded overflow-hidden shadow-lg p-6 bg-white">
                 <img class="w-full h-48 object-cover" src="https://laravel-livewire.com/img/sponsor_jetbrains.svg"
                     alt="Image">
@@ -26,8 +26,6 @@
                     </p>
                 </div>
             </div>
-        </div>
-
-
+        </div> --}}
     </div>
 @endsection
