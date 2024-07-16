@@ -112,6 +112,6 @@
             if (toastDanger) {
                 toastDanger.style.display = 'none';
             }
-        }, 5000);
+        }, 4000);
     </script>
 @endsection
