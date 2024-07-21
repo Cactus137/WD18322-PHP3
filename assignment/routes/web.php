@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/viewed-posts', [HomeController::class, 'viewedPosts'])->name('viewed-posts');
+Route::get('/login', [HomeController::class, 'login'])->name('auth.login');
+Route::get('/register', [HomeController::class, 'register'])->name('auth.register');
+Route::get('/logout', [HomeController::class, 'logout'])->name('auth.logout');
+Route::get('/forgot-password', [HomeController::class, 'forgotPassword'])->name('auth.forgot-password');
+Route::get('/reset-password', [HomeController::class, 'resetPassword'])->name('auth.reset-password');
+
+Route::get('/{cSlug}/{pSlug}', [HomeController::class, 'post'])->name('post');
+Route::get('/{cSlug}', [HomeController::class, 'category'])->name('category');
