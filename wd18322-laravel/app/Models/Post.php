@@ -12,6 +12,8 @@ class Post extends Model
 
     protected $table = 'posts';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'title',
         'description',
@@ -20,4 +22,9 @@ class Post extends Model
         'views',
         'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
 }
