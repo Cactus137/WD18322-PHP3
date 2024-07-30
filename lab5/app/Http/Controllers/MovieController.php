@@ -48,7 +48,7 @@ class MovieController extends Controller
         if ($request->hasFile('poster')) {
             $file = $request->file('poster');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/movies', $filename);
+            $file->storeAs('public/movies', $filename); 
             $data['poster'] = $filename;
         }
 

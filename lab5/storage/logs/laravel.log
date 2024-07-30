@@ -1656,3 +1656,25 @@
 #44 /home/cactus/Workspace/WD18322_PHP3/lab5/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #45 {main}
 "} 
+[2024-07-27 05:03:11] local.ERROR: Command "sser" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"sser\" is not defined. at /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php:737)
+[stacktrace]
+#0 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php(266): Symfony\\Component\\Console\\Application->find()
+#1 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#3 /home/cactus/Workspace/WD18322-PHP3/lab5/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 {main}
+"} 
+[2024-07-27 05:53:43] local.ERROR: Command "storage:" is ambiguous.
+Did you mean one of these?
+    storage:link   Create the symbolic links configured for the application
+    storage:unlink Delete existing symbolic links configured for the application. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"storage:\" is ambiguous.
+Did you mean one of these?
+    storage:link   Create the symbolic links configured for the application
+    storage:unlink Delete existing symbolic links configured for the application. at /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php:778)
+[stacktrace]
+#0 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php(266): Symfony\\Component\\Console\\Application->find()
+#1 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/cactus/Workspace/WD18322-PHP3/lab5/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#3 /home/cactus/Workspace/WD18322-PHP3/lab5/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#4 {main}
+"} 
