@@ -19,8 +19,7 @@ class Post extends Model
         'slug',
         'thumbnail',
         'content',
-        'author',
-        'view_count',
+        'author', 
         'category_id',
         'status_id',
     ];

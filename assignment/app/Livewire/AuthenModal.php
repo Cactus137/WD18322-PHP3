@@ -35,7 +35,7 @@ class AuthenModal extends Component
 
             $this->dispatch('hide-modal');
 
-            return redirect()->back();
+            return redirect()->route('home');
         } else {
             // put error to log_email: Tài khoản hoặc mật khẩu không chính xác 
             $this->addError('log_email', 'Tài khoản hoặc mật khẩu không chính xác');
@@ -48,8 +48,7 @@ class AuthenModal extends Component
             [
                 'res_email' => 'required|email|unique:users,email',
                 'res_password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
-            ],
-            // Custom error messages Vietnamese
+            ], 
             [
                 'res_email.required' => 'Vui lòng nhập email.',
                 'res_email.email' => 'Định dạng email không hợp lệ.',

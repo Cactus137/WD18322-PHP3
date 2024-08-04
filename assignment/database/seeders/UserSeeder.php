@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
                 'username' => $faker->userName,
                 'full_name' => $faker->name,
-                'avatar' => $faker->imageUrl($width = 640, $height = 480),
+                'avatar' => 'z5065557836243_d8917957648f6fea7694fbb17f1c5c81.jpg',
                 'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 // Gender: 1: Male, 2: Female, 3: Other
                 'gender_id' => $faker->numberBetween($min = 1, $max = 3),
@@ -28,12 +28,10 @@ class UserSeeder extends Seeder
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
                 // Role_id: 1: Admin, 2: User
-                'role_id' => $faker->numberBetween($min = 1, $max = 2),
+                'role_id' => 1,
                 // Status_id: 1: Active, 2: Inactive
-                'status_id' => $faker->numberBetween($min = 1, $max = 2),
-                'email_verified_at' => $faker->dateTime($max = 'now', $timezone = null),
+                'status_id' => 1,
                 'password' => bcrypt('password'),
-                'remember_token' => null,
             ]);
         }
     }

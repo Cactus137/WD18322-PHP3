@@ -24,4 +24,9 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id', 'id');
     }
+
+    public function status()
+    {
+        return $this->belongsTo(CategoryStatus::class, 'status_id', 'id');
+    }
 }

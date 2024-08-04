@@ -36,16 +36,7 @@ class PostSeeder extends Seeder
                 'status_id' => 1,
                 'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
             ]);
-        }
-
-        // Post Image table
-        for ($i = 0; $i < 100; $i++) {
-            $randomImage = $images[array_rand($images)];
-            DB::table('post_images')->insert([
-                'post_id' => $faker->numberBetween($min = 1, $max = 100),
-                'image' => 'assets/img/dummy/' . $randomImage->getFilename(),
-            ]);
-        }
+        } 
 
         // Bookmark table
         for ($i = 0; $i < 100; $i++) {

@@ -29,5 +29,7 @@ export default {
             sans: ["Roboto", "sans-serif"],
         },
     },
-    plugins: [require("flowbite/plugin")],
+    plugins: [
+        require("flowbite/plugin"), 
+    ],
 };

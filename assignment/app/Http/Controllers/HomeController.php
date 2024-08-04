@@ -134,29 +134,9 @@ class HomeController extends Controller
         return view('pages.clients.contact-us');
     }
 
-    public function login()
-    {
-        return view('auth.login');
-    }
-
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function forgotPassword()
-    {
-        return view('auth.forgot-password');
-    }
-
-    public function resetPassword()
-    {
-        return view('auth.reset-password');
-    }
-
     public function logout()
     {
-        session()->forget('user');
+        auth()->logout(); 
         return redirect()->route('home');
     }
 }
