@@ -21,7 +21,7 @@
         @include('partials.header-admin')
     </div>
 
-    <div class="content h-screen">
+    <div class="content min-h-screen">
         @yield('content')
     </div>
 

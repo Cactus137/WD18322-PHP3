@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SendMailController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.home');
 // })->name('admin.home');
 
-Route::get('/about', function () {
-    return view('admin.about');
-})->name('admin.about');
+// Route::get('/about', function () {
+//     return view('admin.about');
+// })->name('admin.about');
 
 // Route::get('/posts', function () {
 // $posts = DB::table('posts')->get();
@@ -52,9 +54,22 @@ Route::get('/about', function () {
 // return ($posts);
 // });
 
-Route::get('/', [PostController::class, 'index'])->name('admin.posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
-Route::post('/posts/store', [PostController::class, 'store'])->name('admin.posts.store');
-Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
-Route::put('/posts/{id}/update', [PostController::class, 'update'])->name('admin.posts.update');
-Route::delete('/posts/{id}/delete', [PostController::class, 'delete'])->name('admin.posts.delete'); 
+
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
+
+Route::middleware('auth.check')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('admin.posts.index');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::post('/posts/store', [PostController::class, 'store'])->name('admin.posts.store');
+    Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
+    Route::put('/posts/{id}/update', [PostController::class, 'update'])->name('admin.posts.update');
+    Route::delete('/posts/{id}/delete', [PostController::class, 'delete'])->name('admin.posts.delete');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+// Send mail forgot password
+Route::get('/forgot-password/{username}', [SendMailController::class, 'forgotPassword'])->name('forgotPassword');
