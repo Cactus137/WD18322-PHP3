@@ -27,9 +27,6 @@ class EditProfileRequest extends FormRequest
             'full_name' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
             'gender_id' => 'required|integer',
-            'dob' => 'required|date',
-            'address' => 'required|string',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 
@@ -50,13 +47,6 @@ class EditProfileRequest extends FormRequest
             'phone.string' => 'Phone must be a string',
             'phone.max' => 'Phone must not be greater than 255 characters',
             'gender_id.required' => 'Gender is required',
-            'dob.required' => 'Date of birth is required',
-            'dob.date' => 'Date of birth must be a valid date',
-            'address.required' => 'Address is required',
-            'address.string' => 'Address must be a string',
-            'avatar.image' => 'Avatar must be an image',
-            'avatar.mimes' => 'Avatar must be a file of type: jpeg, png, jpg, gif, svg',
-            'avatar.max' => 'Avatar must not be greater than 2048 kilobytes',
         ];
     }
 }

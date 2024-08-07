@@ -7,7 +7,13 @@
                 <div
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-6">
-                        <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Profile</p>
+                        <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Posts</p>
+                        @session('success')
+                            <div class="relative w-full p-4 text-white rounded-lg bg-slate-700">{{ session('success') }}</div>
+                        @endsession
+                        @session('error')
+                            <div class="relative w-full p-4 text-white rounded-lg bg-slate-700">{{ session('error') }}</div>
+                        @endsession
                         <form action="{{ route('admin.posts.update', $post->slug) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf

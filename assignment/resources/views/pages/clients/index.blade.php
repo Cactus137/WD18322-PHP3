@@ -19,7 +19,8 @@
                         @endphp
                         <div class="relative hover-img max-h-98 overflow-hidden">
                             <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                <img class="max-w-full w-full mx-auto h-auto" src="{{ $news->thumbnail }}" />
+                                <img class="max-w-full w-full mx-auto h-auto"
+                                    src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                             </a>
                             <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
                                 <a href="{{ route('post', [$category->slug, $news->slug]) }}">
@@ -55,7 +56,7 @@
                             <article class="flex-shrink max-w-full w-full sm:w-1/2">
                                 <div class="relative hover-img max-h-48 overflow-hidden">
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
                                         <a href="{{ route('post', [$category->slug, $news->slug]) }}">
@@ -103,7 +104,7 @@
                                 class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
                                 <div class="flex flex-row sm:block hover-img">
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto" src="{{ $news->thumbnail }}"
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}"
                                             alt="alt title" />
                                     </a>
                                     <div class="py-0 sm:py-3 pl-3 sm:pl-0">
@@ -164,7 +165,7 @@
                                 class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
                                 <div class="flex flex-row sm:block hover-img">
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="py-0 sm:py-3 pl-3 sm:pl-0">
                                         <h3 class="text-lg font-bold leading-tight mb-2">
@@ -211,7 +212,7 @@
                                 <div class="relative hover-img max-h-98 overflow-hidden">
                                     <!--thumbnail-->
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
                                         <!--title-->
@@ -245,7 +246,7 @@
                                 class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
                                 <div class="flex flex-row sm:block hover-img">
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="py-0 sm:py-3 pl-3 sm:pl-0">
                                         <h3 class="text-lg font-bold leading-tight mb-2">
@@ -329,7 +330,7 @@
                                 <div class="relative hover-img max-h-98 overflow-hidden">
                                     <!--thumbnail-->
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
                                         <!--title-->
@@ -362,7 +363,7 @@
                                 class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
                                 <div class="flex flex-row sm:block hover-img">
                                     <a href="{{ route('post', [$category->slug, $news->slug]) }}">
-                                        <img class="max-w-full w-full mx-auto" src="{{ $news->thumbnail }}" />
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('uploads/posts/' . $news->thumbnail) }}" />
                                     </a>
                                     <div class="py-0 sm:py-3 pl-3 sm:pl-0">
                                         <h3 class="text-lg font-bold leading-tight mb-2">

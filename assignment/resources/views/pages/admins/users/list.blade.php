@@ -68,7 +68,7 @@
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <p
                                                     class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                                                    {{ $user->full_name  ?? 'Null' }}</p>
+                                                    {{ $user->full_name ?? 'Null' }}</p>
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
@@ -80,7 +80,7 @@
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <p
                                                     class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                                                    {{ $user->phone  ?? 'Null' }}</p>
+                                                    {{ $user->phone ?? 'Null' }}</p>
                                             </td>
                                             <td
                                                 class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
@@ -104,16 +104,16 @@
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent   ">
-                                                <form action="{{ route('admin.users.delete', $user->id) }}" method="post">
-                                                    <a href="{{ route('admin.users.edit', $user->id) }}"
-                                                        class="text-xs font-semibold px-2 leading-tight dark:text-white dark:opacity-80 text-blue-500">
-                                                        Edit </a>
-                                                    @csrf
+                                                {{-- <form action="{{ route('admin.users.delete', $user) }}" method="post"> --}}
+                                                <a href="{{ route('admin.users.edit', $user) }}"
+                                                    class="text-xs font-semibold px-2 leading-tight dark:text-white dark:opacity-80 text-blue-500">
+                                                    Edit </a>
+                                                {{-- @csrf
                                                     @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Are you sure?')"
                                                         class="text-xs font-semibold px-2 leading-tight dark:text-white dark:opacity-80 text-red-500">
-                                                        Delete </button>
-                                                </form>
+                                                        Delete </button> --}}
+                                                {{-- </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

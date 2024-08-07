@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
                 // Role_id: 1: Admin, 2: User
-                'role_id' => 1,
+                'role_id' => 2,
                 // Status_id: 1: Active, 2: Inactive
                 'status_id' => 1,
                 'password' => bcrypt('password'),

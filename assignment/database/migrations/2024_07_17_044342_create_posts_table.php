@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->text('content');
             $table->string('author');
-            $table->string('view_count');
+            $table->string('view_count')->default(0);
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('status_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');

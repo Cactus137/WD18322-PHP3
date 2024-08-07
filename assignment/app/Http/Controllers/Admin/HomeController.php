@@ -25,8 +25,8 @@ class HomeController extends Controller
         $newUsers = User::where('created_at', '>=', now()->subDays(7))->count();
         $totalCategories = Category::count();
         $totalPosts = Post::count();
-        // Top 10 posts by view count
-        $topPosts = Post::orderBy('view_count', 'desc')->take(10)->get();
+        // Top 10 posts by view count and by month
+        $topPosts = Post::whereMonth('created_at', now()->month)->orderBy('view_count', 'desc')->take(10)->get();
         // count totalPosts by category
         $categories = Category::all();
         $categoryPosts = [];

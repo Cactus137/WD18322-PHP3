@@ -15,7 +15,7 @@ class CategoryController extends Controller
         $this->currentRoute = 'admin.category';
         view()->share('currentRoute', $this->currentRoute);
     }
-    
+
     public function index()
     {
         $categories = Category::all();
@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
         $category = Category::where('slug', $slug)->first();
         $category->update($data);
-        return redirect()->route('admin.categories')->with('success', 'Category updated successfully');
+        return back()->with('success', 'Category updated successfully');
     }
 
     public function delete($slug)

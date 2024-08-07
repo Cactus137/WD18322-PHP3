@@ -16,7 +16,7 @@ class PostController extends Controller
         $this->currentRoute = 'admin.post';
         view()->share('currentRoute', $this->currentRoute);
     }
-    
+
     public function index()
     {
         // descending order
@@ -75,14 +75,14 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         $categories = Category::all();
-        $status = PostStatus::all(); 
+        $status = PostStatus::all();
         return view('pages.admins.posts.edit', compact('post', 'categories', 'status'));
     }
 
     public function update(Request $request, $slug)
     {
         $request->validate([
-            'title' => 'required|string|max:255|unique:posts',
+            'title' => 'required|string|max:255',
             'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'author' => 'required|string',
             'category_id' => 'required',
@@ -120,7 +120,7 @@ class PostController extends Controller
         }
 
         $post->update($data);
-        return redirect()->route('admin.posts')->with('success', 'Post updated successfully');
+        return back()->with('success', 'Post updated successfully');
     }
 
     public function delete($slug)

@@ -10,6 +10,7 @@ use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Ul;
 
 class UserController extends Controller
 {
@@ -27,20 +28,16 @@ class UserController extends Controller
         return view('pages.admins.users.list', compact('users'));
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         $genders = UserGender::all();
         $roles = UserRoles::all();
         $statuses = UserStatus::all();
         return view('pages.admins.users.edit', compact('user', 'genders', 'roles', 'statuses'));
     }
 
-    public function update(EditProfileRequest $request, $id)
+    public function update(EditProfileRequest $request, User $user)
     {
-        $user = User::find($id);
-        // dd($request->all());
-
         $data = $request->except('avatar');
         $data['avatar'] = $user->avatar;
 
@@ -49,20 +46,25 @@ class UserController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/users'), $fileName);
             $data['avatar'] = $fileName;
-
             // Delete user's old avatar
             if ($user->avatar && file_exists(public_path('uploads/users/' . $user->avatar))) {
                 unlink(public_path('uploads/users/' . $user->avatar));
             }
         }
 
+        // Check if $user is the currently authenticated user
+        if ($user->role_id == 1) {
+            if ($data['role_id'] == 2 || $data['status_id'] == 2) {
+                return back()->with('error', 'Update failed. You cannot change the role or status of the currently authenticated user');
+            }
+        }
+
         $user->update($data);
-        return redirect()->route('admin.users')->with('success', 'User updated successfully');
+        return back()->with('success', 'User updated successfully');
     }
 
-    public function delete($id)
+    public function delete(User $user)
     {
-        $user = User::find($id);
 
         // Check if $user is the currently authenticated user
         if ($user->id === Auth::user()->id) {

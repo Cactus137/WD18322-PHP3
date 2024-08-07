@@ -32,9 +32,9 @@ Route::middleware('auth.check')->prefix('admin')->group(function () {
     // Users
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.users');
-        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
-        Route::put('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
-        Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
+        Route::get('/edit/{user}', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/update/{user}', [UserController::class, 'update'])->name('admin.users.update');
+        Route::delete('/delete/{user}', [UserController::class, 'delete'])->name('admin.users.delete');
     });
     // Categories
     Route::prefix('categories')->group(function () {

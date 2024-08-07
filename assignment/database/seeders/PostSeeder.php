@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $images = File::files(public_path('assets/img/dummy'));
+        $images = File::files(public_path('uploads/posts/'));
 
         // Post table
         for ($i = 0; $i <= 500; $i++) {
@@ -26,17 +26,15 @@ class PostSeeder extends Seeder
             DB::table('posts')->insert([
                 'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'slug' => Str::slug($faker->sentence($nbWords = 6, $variableNbWords = true)),
-                'thumbnail' => 'assets/img/dummy/' . $randomImage->getFilename(),
+                'thumbnail' => $randomImage->getFilename(),
                 'content' => $faker->text($maxNbChars = 20000),
                 'author' => $faker->name,
                 'view_count' => $faker->numberBetween($min = 1, $max = 1000),
-                'category_id' => $faker->numberBetween($min = 1, $max = 14),
-                // 1: Active, 2: Inactive
-                // 'status_id' => $faker->numberBetween($min = 1, $max = 2),
-                'status_id' => 1,
+                'category_id' => $faker->numberBetween($min = 1, $max = 14), 
+                'status_id' => 2,
                 'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
             ]);
-        } 
+        }
 
         // Bookmark table
         for ($i = 0; $i < 100; $i++) {

@@ -8,7 +8,13 @@
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-6">
                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Profile</p>
-                        <form action="{{ route('admin.users.update', $user->id) }}" method="post">
+                        @session('success')
+                            <div class="relative w-full p-4 text-white rounded-lg bg-slate-700">{{ session('success') }}</div>
+                        @endsession
+                        @session('error')
+                            <div class="relative w-full p-4 text-white rounded-lg bg-slate-700">{{ session('error') }}</div>
+                        @endsession
+                        <form action="{{ route('admin.users.update', $user) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -100,6 +106,40 @@
                                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                    <div class="mb-4">
+                                        <label for="role_id"
+                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Role
+                                        </label>
+                                        <select id="role_id" name="role_id"
+                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}" @selected($role->id == $user->role_id)>
+                                                    {{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('role_id')
+                                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                    <div class="mb-4">
+                                        <label for="status_id"
+                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Status
+                                        </label>
+                                        <select id="status_id" name="status_id"
+                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                                            @foreach ($statuses as $status)
+                                                <option value="{{ $status->id }}" @selected($status->id == $user->status_id)>
+                                                    {{ $status->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('status_id')
+                                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                    @enderror
+                                </div>
                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                     <div class="mb-4">
                                         <label for="avatar"
@@ -117,7 +157,8 @@
                                                     <label for="avatar"
                                                         class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                                         <span>Upload a file</span>
-                                                        <input id="avatar" name="avatar" type="file" class="sr-only">
+                                                        <input id="avatar" name="avatar" type="file"
+                                                            class="sr-only">
                                                     </label>
                                                     <p class="pl-1">or drag and drop</p>
                                                 </div>

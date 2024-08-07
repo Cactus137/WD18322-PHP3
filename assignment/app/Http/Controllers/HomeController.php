@@ -15,27 +15,27 @@ class HomeController extends Controller
     public function index()
     {
         // 5 tin tuc moi nhat theo ngay co luot xem nhieu nhat
-        $breakingNews = Post::where('status_id', 1)
+        $breakingNews = Post::where('status_id', 2)
             ->orderBy('view_count', 'desc')
             ->limit(5)
             ->get();
         // Business news
         $businessNews = Post::where('category_id', 4)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->limit(6)
             ->get();
         // Science news 
         $scienceNews = Post::where('category_id', 6)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->limit(8)
             ->get();
         // Sport news
         $sportNews = Post::where('category_id', 8)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->limit(12)
             ->get();
         // Lastest news
-        $lastestNews = Post::where('status_id', 1)
+        $lastestNews = Post::where('status_id', 2)
             ->orderBy('created_at', 'desc')
             ->limit(12)
             ->get();
@@ -52,9 +52,9 @@ class HomeController extends Controller
         $category = Category::where('slug', $cSlug)
             ->first();
         $listNews = Post::where('category_id', $category->id)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->orderBy('created_at', 'desc')
-            ->paginate(18);
+            ->paginate(18); 
         $ads = Ads::where('status_id', 1)
             ->limit(2)
             ->get();
@@ -71,7 +71,7 @@ class HomeController extends Controller
         $listPosts = [];
         foreach ($listId as $id) {
             $post = Post::where('id', $id->post_id)
-                ->where('status_id', 1)
+                ->where('status_id', 2)
                 ->first();
             if ($post) {
                 array_push($listPosts, $post);
@@ -86,13 +86,10 @@ class HomeController extends Controller
             ->first();
         $post = Post::where('slug', $pSlug)
             ->where('category_id', $category->id)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->first();
-        // Image post
-        $images = PostImage::where('post_id', $post->id)
-            ->get();
         $relatedNews = Post::where('category_id', $category->id)
-            ->where('status_id', 1)
+            ->where('status_id', 2)
             ->where('id', '!=', $post->id)
             ->limit(7)
             ->get();
@@ -126,7 +123,7 @@ class HomeController extends Controller
                 UserPostVisit::create($dataVisit);
             }
         }
-        return view('pages.clients.post', compact('category', 'post', 'images', 'relatedNews', 'ads'));
+        return view('pages.clients.post', compact('category', 'post', 'relatedNews', 'ads'));
     }
 
     public function contact()
@@ -136,7 +133,7 @@ class HomeController extends Controller
 
     public function logout()
     {
-        auth()->logout(); 
+        auth()->logout();
         return redirect()->route('home');
     }
 }
