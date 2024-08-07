@@ -21,13 +21,13 @@
         @include('partials.header-admin')
     </div>
 
-    <div class="content h-screen">
+    <div class="content">
         @yield('content')
     </div>
 
-    <div class="footer">
+    {{-- <div class="footer">
         @include('partials.footer-admin')
-    </div>
+    </div> --}}
 
     @livewireScripts
 </body>
